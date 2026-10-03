@@ -5,21 +5,25 @@ version: 1
 project:
   # A fresh id, unique in this journal. The build rejects this placeholder.
   # https://scholar.nexus/oaktree-sapling/guide/journal-yml#id-pattern
-  id: CHANGE-ME-template-placeholder
-  title: CHANGE-ME (your paper title)
-  # authors:
-  #   - name: Ada Lovelace
-  #     orcid: 0000-0000-0000-0000
-  #     affiliations:
-  #       - Your Institution
-  #     email: you@example.org
-  #     corresponding: true
-  #     roles:
-  #       - conceptualization
-  #       - writing - original draft
-  # keywords:
-  #   - keyword one
-  #   - keyword two
+  id: fieldnotes-2026-seattle-rain
+  title: How rainy is Seattle, really? Four years of daily weather
+  authors:
+    - name: Josiah Carberry
+      orcid: 0000-0002-1825-0097
+      affiliations:
+        - Brown University
+      email: josiah@example.org
+      corresponding: true
+      roles:
+        - conceptualization
+        - formal analysis
+        - visualization
+        - writing - original draft
+  keywords:
+    - precipitation
+    - climatology
+    - interactive visualization
+    - Seattle
   bibliography:
     - bib.bib
   options:
