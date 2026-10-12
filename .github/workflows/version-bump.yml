@@ -8,6 +8,11 @@ on:
   schedule:
     - cron: "17 4 * * 1" # weekly, Monday 04:17 UTC
   workflow_dispatch:
+    inputs:
+      to:
+        description: "release tag to move to (empty: the newest stable release)"
+        type: string
+        required: false
 
 permissions:
   contents: write # commit the bump branch
@@ -21,10 +26,21 @@ jobs:
       sha: ${{ fromJSON(steps.upgrade.outputs.result || '{}').head_sha }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - id: to
+        shell: bash
+        env:
+          TO: ${{ inputs.to }}
+        run: |
+          [ -z "$TO" ] && exit 0
+          if ! printf '%s' "$TO" | grep -Eq '^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$'; then
+            echo "::error::to '$TO' is not a release tag"
+            exit 1
+          fi
+          echo "flag=--to $TO" >> "$GITHUB_OUTPUT"
       - id: upgrade
         uses: ./.github/actions/engine
         with:
-          args: upgrade --paper . --version-only --yes
+          args: upgrade --paper . --version-only --yes ${{ steps.to.outputs.flag }}
         env:
           GH_TOKEN: ${{ github.token }}
 
