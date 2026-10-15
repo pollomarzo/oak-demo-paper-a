@@ -7,6 +7,9 @@ abstract: |
 
 ## Introduction
 
+See [the station record](https://example.invalid/seattle-station-record) for the raw data.
+
+
 Ask anyone outside the Pacific Northwest about Seattle and the answer comes back quickly: it rains all the time. The claim mixes two different quantities. One is how often it rains, the share of days with any measurable precipitation. The other is how much rain falls over a year. A city can score high on the first and modestly on the second if most of its wet days are light drizzle.
 
 This note separates the two using the daily Seattle record distributed with the Vega datasets, which covers every day from 1 January 2012 to 31 December 2015. Each day carries the precipitation in millimetres, the daily high and low temperature, the mean wind speed and a one-word weather label.
